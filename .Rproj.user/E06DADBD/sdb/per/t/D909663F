@@ -1,0 +1,17 @@
+{
+    "contents" : "library(excel.link)\nlibrary(plyr)\nlibrary(tidyr)\n\n#Working directories------------------------------------\nwd_data <- c('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/RVAJR_C01')\nwd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')\n\n#Data file name----------------------------------------\n# scenario_name <- c()\nfile_name <- c('EFDC_export_120616-1150.xlsb')\nworksheets < -c('WWTP', 'Unknown', 'Stormwater', 'CSOs')\n\nsheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'E. coli')\ndf_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Ecoli')\n\n#Functions---------------------------------------------\n#Wrapper for xl.read.file from the excel.link package\nread_in_files <-function(x, file_name){\n  xl.read.file(filename = file_name\n               , xl.sheet = x\n               , header = TRUE\n               , top.left.cell = 'A10')\n}\n\n#Load lookup tables------------------------------------\nsetwd(wd_lookup)\nlookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)\n\n#Load data---------------------------------------------\nsetwd(wd_data)\n\ndf <- xl.read.file(filename = 'EFDC_export_120616-1150.xlsb'\n                   , xl.sheet = 'WWTP'\n                   , header = TRUE\n                   , top.left.cell = 'A10')\n\nnames(df) <- c('datetime', lookup_station[ , 3])\n\n#Read in the data\ndata <- lapply(sheet_names, read_in_files, file_name = file_name)\n\n#Name the data frames\nnames(data) <- df_names\n\n#Update column names\ndata <- lapply(data, setNames, nm = c('datetime', lookup_station[ , 3]))\n\n#Combine into a single dataframe\ndat_complete <- ldply(data, .id = 'component')\n\n#Replace values of zero with 0.001\ndat_complete[dat_complete == 0] <- 0.001\n\n\n",
+    "created" : 1482871947393.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1212499713",
+    "id" : "D909663F",
+    "lastKnownWriteTime" : 1482872039,
+    "path" : "W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis/00_Read_Component_Data_xlsb_Format.R",
+    "project_path" : "Component_Analysis/00_Read_Component_Data_xlsb_Format.R",
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

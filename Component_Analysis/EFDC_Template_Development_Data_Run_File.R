@@ -1,0 +1,32 @@
+
+#Required Parameters------------------------
+scenario_name <- c('RVAJR_C01')
+
+#Working directories------------------------
+wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
+wd_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
+
+#Parameters used in 00_Read_Component_Data_xlsb_Format.R
+file_name <- c('EFDC_Template_Development_Data.xlsb')
+rds_name <- paste(scenario_name, '_test_data.rds', sep = '')
+
+#Parameters used in Downstream_Boundary_STV.R
+##None
+
+#Run---------------------------------------
+#Check if a faster loading RDS file exists, if not then load from xlsb format
+setwd(wd_data_src)
+if(file.exists(rds_name)){
+  dat_complete <- readRDS(file = rds_name)
+}else{
+  setwd(wd_script_src)
+  source('00_Read_Component_Data_xlsb_Format.R')
+}
+
+#Print STV plot
+setwd(wd_script_src)
+source('Downstream_Boundary_STV.R')
+
+#Print Geomean plot
+setwd(wd_script_src)
+source('Downstream_Boundary_GEOMEAN.R')

@@ -7,10 +7,10 @@ library(gridExtra)
 #Working directories-----------------
 wd_data_src <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
 wd_print <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/'
-                  , scenario_name, sep = '')
+                  , component_scenario_name, sep = '')
 
 #Parameters--------------------------
-plot_name <- paste(scenario_name, '_STV_Component_Plot.png', sep = '')
+plot_name <- paste(component_scenario_name, '_STV_Component_Plot.png', sep = '')
 
 #Data munging------------------------
 dat <- dat_complete %>% select(1:2, 7)

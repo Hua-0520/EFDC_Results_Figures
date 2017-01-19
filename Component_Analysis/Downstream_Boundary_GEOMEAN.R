@@ -29,8 +29,6 @@ dat_monthly <- spread(dat, component, downstream_boundary) %>% select(-Ecoli)
 names(dat_monthly) <- normVarNames(names(dat_monthly))
 dat_monthly$total <- rowSums(dat_monthly[ , 3:7])
 
-# dat_monthly$ln_total <- log(dat_monthly$total)
-
 dat_monthly <- dat_monthly %>% group_by(datetime) %>% 
   mutate(ln_total =log(total)
          , ln_wwtp = log(total - wwtp)

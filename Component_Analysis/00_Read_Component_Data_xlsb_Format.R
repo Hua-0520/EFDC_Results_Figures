@@ -4,13 +4,16 @@ library(plyr)
 library(tidyr)
 
 #Working directories------------------------------------
-wd_data <- c('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/RVAJR_C01')
+wd_data <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
 wd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')
+
+#parameters---------------------------------------------
+# data_file_name <- paste(scenario_name, '.rds', sep = '')
 
 #Data file name----------------------------------------
 # scenario_name <- c()
 # file_name <- c('EFDC_export_120616-1150.xlsb')
-file_name <- c('EFDC_Template_Development_Data.xlsb')
+# file_name <- c('EFDC_Template_Development_Data.xlsb') provided by the scenario run file
 worksheets <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
 sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'E. coli')
@@ -57,3 +60,5 @@ dat_complete <- ldply(data, .id = 'component')
 dat_complete[dat_complete == 0] <- 0.01
 
 
+setwd(wd_data)
+if(!file.exists(rds_name)){saveRDS(object = dat_complete, file = rds_name)}

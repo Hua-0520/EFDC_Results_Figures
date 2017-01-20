@@ -1,11 +1,4 @@
-#Additional required libraries-------
-library(plyr); library(dplyr); library(ggplot2)
-library(tidyr); library(lubridate); library(stringr)
-library(rattle); library(scales); library(forcats)
-library(gridExtra)
-
 #Working directories-----------------
-wd_data_src <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
 wd_print <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/'
                   , scenario_name, sep = '')
 
@@ -64,7 +57,6 @@ dat_plot$component_fac <- fct_relevel(dat_plot$component_fac, 'upstream_perc_con
                                       , 'csos_perc_cont', 'stormwater_perc_cont'
                                       , 'unknown_perc_cont', 'wwtp_perc_cont')
 
-
 leg_labels <- c('Upstream', 'CSOs', 'Stormwater', 'Background', 'WWTP')
 leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3')
 
@@ -100,7 +92,6 @@ xx <- ggplot(dat_plot, aes(x = year_mo_fac, y = perc_contribution, fill = compon
   theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) +
   theme(panel.grid = element_blank())+
   theme(plot.margin=unit(c(-8, 8, 8, 8), 'pt')) #TRBL
-
 
 plot_stv <- grid.arrange(x, xx, ncol = 1)
 

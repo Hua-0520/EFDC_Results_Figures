@@ -1,18 +1,7 @@
-#Additional required libraries-------
-library(plyr); library(dplyr); library(ggplot2)
-library(tidyr); library(lubridate); library(stringr)
-library(rattle); library(scales); library(forcats)
-library(gridExtra)
-
 #Working directories-----------------
-wd_data_src <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
 wd_print <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/'
                   , scenario_name, sep = '')
 
-#Function----------------------------
-log_minus <- function(x){
-  y <- log()
-}
 #Parameters--------------------------
 plot_name <- paste(scenario_name, '_GEOMEAN_Component_Plot.png', sep = '')
 
@@ -28,8 +17,6 @@ names(dat) <- normVarNames(names(dat))
 dat_monthly <- spread(dat, component, downstream_boundary) %>% select(-Ecoli)
 names(dat_monthly) <- normVarNames(names(dat_monthly))
 dat_monthly$total <- rowSums(dat_monthly[ , 3:7])
-
-# dat_monthly$ln_total <- log(dat_monthly$total)
 
 dat_monthly <- dat_monthly %>% group_by(datetime) %>% 
   mutate(ln_total =log(total)

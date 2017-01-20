@@ -1,10 +1,11 @@
 
 #Required Parameters------------------------
-scenario_name <- c('RVAJR_C01')
+scenario_name <- c('RVAJR02_079')
+component_scenario_name <- c('RVAJR_C01')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
-wd_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
+wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
 file_name <- c('EFDC_Template_Development_Data.xlsb')

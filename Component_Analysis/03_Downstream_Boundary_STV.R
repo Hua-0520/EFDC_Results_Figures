@@ -34,11 +34,15 @@ dat_monthly <- spread(dat, component, downstream_boundary) %>%
                    , wwtp = sum(WWTP)) %>% 
   left_join(dat_monthly_stv_std, .)
 
+#Replacing component total results with EFDC results
+dat_monthly <- left_join(dat_monthly, dat_monthly_stv_std_efdc)
+dat_monthly <- dat_monthly %>% select(1, 9, 3:8)
+
 #Calculate percent contribution for each category if the 
 #monthly exceedance percent is is >10%
 #and reshape into something useable for ggplot
 dat_plot <- dat_monthly %>% 
-  filter(perc_235_violation > 10) %>% 
+  filter(perc_235_violation_efdc > 10) %>% 
   mutate(upstream_perc_cont = upstream / total * 100
          , csos_perc_cont = csos / total * 100
          , stormwater_perc_cont = stormwater / total * 100
@@ -62,7 +66,7 @@ leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3')
 
 #Plot!-------------------------------
 #Exceedance plot
-x <- ggplot(dat_monthly, aes(x = factor(year_month), y = perc_235_violation)) +
+x <- ggplot(dat_monthly, aes(x = factor(year_month), y = perc_235_violation_efdc)) +
   geom_bar(stat = 'identity', fill = 'black') +
   geom_hline(yintercept = 10, color = 'red') +
   scale_y_continuous(labels = comma, expand = c(0, 0), limits = c(0, 100)) +

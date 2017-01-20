@@ -36,24 +36,29 @@ dat_monthly <- dat_monthly %>% group_by(year_month) %>%
 
 dat_year_mo <- data.frame(year_month = dat_monthly[ , 1])
 
+# #Replacing component total results with EFDC results
+dat_monthly <- left_join(dat_monthly, dat_monthly_geomean_efdc)
+dat_monthly <- dat_monthly %>% select(1:2, 8, 3:7)
+
+#Filter for total_efdc > 126, but use the component total for the calculation
 dat_plot <- dat_monthly %>% 
-  filter(total > 126) %>% 
+  filter(total_efdc > 126) %>% 
   mutate(upstream = (total - upstream) / total
          , csos = (total - csos) / total
          , stormwater = (total - stormwater) / total
          , unknown = (total - unknown) / total
          , wwtp = (total - wwtp) / total)
 
-names(dat_plot)[2] <- c('total_geomean')
+names(dat_plot)[3] <- c('total_geomean')
 
-dat_plot$total <- rowSums(dat_plot[ , 3:7])
+dat_plot$total <- rowSums(dat_plot[ , 4:8])
 
 dat_plot <- dat_plot %>% 
-  mutate(upstream = upstream / total
-         , csos = csos / total
-         , stormwater = stormwater / total
-         , unknown = unknown / total
-         , wwtp = wwtp / total) %>% 
+  mutate(upstream = upstream / total * 100
+         , csos = csos / total * 100
+         , stormwater = stormwater / total * 100
+         , unknown = unknown / total * 100
+         , wwtp = wwtp / total * 100) %>% 
   left_join(dat_year_mo, .) %>% 
   select(year_month, upstream, csos, stormwater, unknown, wwtp, -total_geomean, -total) %>% 
   gather(., component, perc_contribution, 2:6)
@@ -72,7 +77,7 @@ leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3')
 
 #Plot!-------------------------------
 #Exceedance plot
-x <- ggplot(dat_monthly, aes(x = factor(year_month), y = total)) +
+x <- ggplot(dat_monthly, aes(x = factor(year_month), y = total_efdc)) +
   geom_bar(stat = 'identity', fill = 'black') +
   geom_hline(yintercept = 126, color = 'red') +
   scale_y_continuous(labels = comma, expand = c(0, 0), limits = c(0, 250)) +
@@ -85,7 +90,7 @@ x <- ggplot(dat_monthly, aes(x = factor(year_month), y = total)) +
   theme(plot.margin=unit(c(10, 8, 0, 8), 'pt')) #TRBL
 
 #Percent contribution plot
-xx <- ggplot(dat_plot, aes(x = year_mo_fac, y = perc_contribution * 100, fill = component_fac)) +
+xx <- ggplot(dat_plot, aes(x = year_mo_fac, y = perc_contribution, fill = component_fac)) +
   geom_bar(stat = 'identity') +
   scale_y_continuous(labels = comma, expand = c(0, 0)) +
   scale_color_manual(values = leg_colors, labels = leg_labels) +

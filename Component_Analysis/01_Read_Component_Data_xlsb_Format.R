@@ -22,7 +22,7 @@ setwd(wd_lookup)
 lookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)
 
 #Load data---------------------------------------------
-setwd(wd_data)
+setwd(wd_component_data_src)
 
 #Read in the data as a list of data frames
 #This is slow (~2-3 minutes)
@@ -40,5 +40,5 @@ dat_complete <- ldply(data, .id = 'component')
 #Replace values of zero with 0.01
 dat_complete[dat_complete == 0] <- 0.01
 
-setwd(wd_data)
+setwd(wd_component_data_src)
 if(!file.exists(rds_name)){saveRDS(object = dat_complete, file = rds_name_component)}

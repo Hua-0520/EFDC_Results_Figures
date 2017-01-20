@@ -1,8 +1,3 @@
-#Required libraries-------------------------------------
-library(excel.link)
-library(plyr)
-library(tidyr)
-
 #Working directories------------------------------------
 wd_data <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
 wd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')

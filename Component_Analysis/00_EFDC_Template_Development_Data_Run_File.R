@@ -1,3 +1,7 @@
+#Libraries----------------------------------
+library(plyr); library(dplyr); library(ggplot2); library(tidyr); library(lubridate); library(stringr)
+library(rattle); library(scales); library(forcats); library(gridExtra)
+
 #Required Parameters------------------------
 scenario_name <- c('RVAJR02_079')
 component_scenario_name <- c('RVAJR_C01')
@@ -27,7 +31,7 @@ if(file.exists(rds_name_efdc)){
   dat_efdc <- readRDS(file = rds_name_efdc)
 }else{
   setwd(wd_script_src)
-  source('00_Read_EFDC_Data_xlsb_Format.R')
+  source('01_Read_EFDC_Data_xlsb_Format.R')
 }
 
 #Load Component Data
@@ -37,13 +41,15 @@ if(file.exists(rds_name_component)){
   dat_complete <- readRDS(file = rds_name_component)
 }else{
   setwd(wd_script_src)
-  source('00_Read_Component_Data_xlsb_Format.R')
+  source('01_Read_Component_Data_xlsb_Format.R')
 }
+
+#Prep EFDC results for inclusion into
 
 #Print STV plot
 setwd(wd_script_src)
-source('Downstream_Boundary_STV.R')
+source('03_Downstream_Boundary_STV.R')
 
 #Print Geomean plot
 setwd(wd_script_src)
-source('Downstream_Boundary_GEOMEAN.R')
+source('03_Downstream_Boundary_GEOMEAN.R')

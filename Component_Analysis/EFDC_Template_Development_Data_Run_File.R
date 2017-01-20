@@ -14,6 +14,23 @@ rds_name <- paste(scenario_name, '_test_data.rds', sep = '')
 ##None
 
 #Run---------------------------------------
+<<<<<<< HEAD
+=======
+
+#Load results from normal EFDC run that go with the component data
+#Check if a faster loading RDS file exists, if not then load from xlsb format
+setwd(wd_script_src)
+#Check if a faster loading RDS file exists, if not then load from xlsb format
+setwd(wd_component_data_src)
+if(file.exists(rds_name)){
+  dat_complete <- readRDS(file = rds_name)
+}else{
+  setwd(wd_script_src)
+  source('00_Read_EFDC_Data_xlsb_Format.R')
+}
+
+#Load Component Data
+>>>>>>> parent of 17d5700... COE 01-19-16
 #Check if a faster loading RDS file exists, if not then load from xlsb format
 setwd(wd_data_src)
 if(file.exists(rds_name)){

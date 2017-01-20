@@ -14,7 +14,7 @@ dat_monthly_stv_std_efdc <- dat %>%
   select(year_month, perc_235_violation)
 
 #temporary addition (17 months)
-dat_stv_check <- dat_monthly_stv_std_efdc %>% filter(perc_235_violation > 10)
+# dat_stv_check <- dat_monthly_stv_std_efdc %>% filter(perc_235_violation > 10)
 
 #Calculate which months violate the geometric mean standard-----
 dat_monthly_geomean_efdc <- dat %>% group_by(datetime) %>% 
@@ -24,4 +24,7 @@ dat_monthly_geomean_efdc <- dat_monthly_geomean_efdc %>% group_by(year_month) %>
   dplyr::summarise(total = exp(mean(ln_total)))
 
 #temporary addition (4 months)
-dat_geomean_check <- dat_monthly_geomean_efdc %>% filter(total > 126)
+# dat_geomean_check <- dat_monthly_geomean_efdc %>% filter(total > 126)
+
+#Remove the source data after calculating WQSs
+rm(dat)

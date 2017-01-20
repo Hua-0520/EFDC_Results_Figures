@@ -4,6 +4,7 @@ component_scenario_name <- c('RVAJR_C01')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
+wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_name, sep = '')
 wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
@@ -21,9 +22,9 @@ rds_name_efdc <- paste(scenario_name, '.rds', sep = '')
 
 #Load results from normal EFDC run that go with the component data
 #Check if a faster loading RDS file exists, if not then load from xlsb format
-setwd(wd_component_data_src)
+setwd(wd_efdc_data_src)
 if(file.exists(rds_name_efdc)){
-  dat_complete <- readRDS(file = rds_name)
+  dat_efdc <- readRDS(file = rds_name_efdc)
 }else{
   setwd(wd_script_src)
   source('00_Read_EFDC_Data_xlsb_Format.R')
@@ -31,9 +32,9 @@ if(file.exists(rds_name_efdc)){
 
 #Load Component Data
 #Check if a faster loading RDS file exists, if not then load from xlsb format
-setwd(wd_data_src)
+setwd(wd_component_data_src)
 if(file.exists(rds_name_component)){
-  dat_complete <- readRDS(file = rds_name)
+  dat_complete <- readRDS(file = rds_name_component)
 }else{
   setwd(wd_script_src)
   source('00_Read_Component_Data_xlsb_Format.R')

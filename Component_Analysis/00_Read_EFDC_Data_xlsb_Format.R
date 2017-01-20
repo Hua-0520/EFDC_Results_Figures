@@ -14,15 +14,6 @@ worksheets <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'E. coli')
 df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
 
-#Functions---------------------------------------------
-#Wrapper for xl.read.file from the excel.link package
-# read_in_files <-function(x, file_name){
-#   xl.read.file(filename = file_name
-#                , xl.sheet = x
-#                , header = TRUE
-#                , top.left.cell = 'A10')
-# }
-
 #Load lookup tables------------------------------------
 setwd(wd_lookup)
 lookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)

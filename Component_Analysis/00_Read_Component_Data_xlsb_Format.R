@@ -7,13 +7,7 @@ library(tidyr)
 wd_data <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
 wd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')
 
-#parameters---------------------------------------------
-# data_file_name <- paste(scenario_name, '.rds', sep = '')
-
 #Data file name----------------------------------------
-# scenario_name <- c()
-# file_name <- c('EFDC_export_120616-1150.xlsb')
-# file_name <- c('EFDC_Template_Development_Data.xlsb') provided by the scenario run file
 worksheets <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
 sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'E. coli')
@@ -35,14 +29,6 @@ lookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)
 #Load data---------------------------------------------
 setwd(wd_data)
 
-#This is slow (~2-3 minutes)
-# df <- xl.read.file(filename = 'EFDC_export_120616-1150.xlsb'
-#                    , xl.sheet = 'WWTP'
-#                    , header = TRUE
-#                    , top.left.cell = 'A10')
-
-# names(df) <- c('datetime', lookup_station[ , 3])
-
 #Read in the data as a list of data frames
 #This is slow (~2-3 minutes)
 data <- lapply(sheet_names, read_in_files, file_name = file_name_component)
@@ -56,9 +42,8 @@ data <- lapply(data, setNames, nm = c('datetime', lookup_station[ , 3]))
 #Combine list of data frames into a single dataframe
 dat_complete <- ldply(data, .id = 'component')
 
-#Replace values of zero with 0.001
+#Replace values of zero with 0.01
 dat_complete[dat_complete == 0] <- 0.01
 
-
 setwd(wd_data)
-if(!file.exists(rds_name)){saveRDS(object = dat_complete, file = rds_name)}
+if(!file.exists(rds_name)){saveRDS(object = dat_complete, file = rds_name_component)}

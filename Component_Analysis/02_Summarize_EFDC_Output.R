@@ -23,4 +23,5 @@ dat_monthly_geomean_efdc <- dat %>% group_by(datetime) %>%
 dat_monthly_geomean_efdc <- dat_monthly_geomean_efdc %>% group_by(year_month) %>% 
   dplyr::summarise(total = exp(mean(ln_total)))
 
+#temporary addition (4 months)
 dat_geomean_check <- dat_monthly_geomean_efdc %>% filter(total > 126)

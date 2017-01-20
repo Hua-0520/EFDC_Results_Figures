@@ -16,12 +16,12 @@ df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
 
 #Functions---------------------------------------------
 #Wrapper for xl.read.file from the excel.link package
-read_in_files <-function(x, file_name){
-  xl.read.file(filename = file_name
-               , xl.sheet = x
-               , header = TRUE
-               , top.left.cell = 'A10')
-}
+# read_in_files <-function(x, file_name){
+#   xl.read.file(filename = file_name
+#                , xl.sheet = x
+#                , header = TRUE
+#                , top.left.cell = 'A10')
+# }
 
 #Load lookup tables------------------------------------
 setwd(wd_lookup)
@@ -31,17 +31,15 @@ lookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)
 setwd(wd_data)
 
 #Read in the data as a list of data frames
-#This is really slow (>10 minutes)
-data <- xl.read.file(filename = file_name_efdc, xl.sheet = 1, header = T, top.left.cell = 'A10')
+#This is really slow (2-3 minutes?)
+dat_efdc <- xl.read.file(filename = file_name_efdc, xl.sheet = 1, header = T, top.left.cell = 'A10')
 
-names(data) <- c('datetime', lookup_station[ ,3])
+names(dat_efdc) <- c('datetime', lookup_station[ ,3])
 
 #Replace values of zero with 0.01
-data[data == 0] <- 0.01
+dat_efdc[dat_efdc == 0] <- 0.01
 
 
 #Save and RDS file if one doesn't exist
 setwd(wd_data)
-if(!file.exists(rds_name_efdc)){saveRDS(object = dat_complete, file = rds_name_efdc)}
-
-#Temp comment
+if(!file.exists(rds_name_efdc)){saveRDS(object = dat_efdc, file = rds_name_efdc)}

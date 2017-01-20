@@ -8,8 +8,11 @@ wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Compo
 wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
-file_name <- c('EFDC_Template_Development_Data.xlsb')
+file_name_component <- c('EFDC_Template_Development_Data.xlsb')
 rds_name <- paste(scenario_name, '_test_data.rds', sep = '')
+
+#Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
+file_name_efdc <- c('EFDC_export_011917-1631.xlsb')
 
 #Parameters used in Downstream_Boundary_STV.R
 ##None

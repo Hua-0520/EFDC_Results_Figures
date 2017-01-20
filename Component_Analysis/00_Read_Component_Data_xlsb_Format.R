@@ -45,7 +45,7 @@ setwd(wd_data)
 
 #Read in the data as a list of data frames
 #This is slow (~2-3 minutes)
-data <- lapply(sheet_names, read_in_files, file_name = file_name)
+data <- lapply(sheet_names, read_in_files, file_name = file_name_component)
 
 #Name the data frames
 names(data) <- df_names

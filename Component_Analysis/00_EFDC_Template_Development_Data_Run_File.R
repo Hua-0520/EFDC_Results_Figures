@@ -1,5 +1,5 @@
 #Libraries----------------------------------
-library(plyr); library(dplyr); library(ggplot2); library(tidyr); library(lubridate); library(stringr)
+library(excel.link); library(plyr); library(dplyr); library(ggplot2); library(tidyr); library(lubridate); library(stringr)
 library(rattle); library(scales); library(forcats); library(gridExtra)
 
 #Required Parameters------------------------

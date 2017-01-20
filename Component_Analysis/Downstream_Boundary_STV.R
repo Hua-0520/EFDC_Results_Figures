@@ -65,7 +65,7 @@ dat_plot$component_fac <- fct_relevel(dat_plot$component_fac, 'upstream_perc_con
                                       , 'unknown_perc_cont', 'wwtp_perc_cont')
 
 
-leg_labels <- c('Upstream', 'CSOs', 'Stormwater', 'Unknown', 'WWTP')
+leg_labels <- c('Upstream', 'CSOs', 'Stormwater', 'Background', 'WWTP')
 leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3')
 
 #Plot!-------------------------------

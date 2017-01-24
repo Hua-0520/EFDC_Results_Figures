@@ -2,12 +2,6 @@
 wd_data <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', scenario_name, sep = '')
 wd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')
 
-#Data file name----------------------------------------
-worksheets <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
-
-sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'E. coli')
-df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
-
 #Functions---------------------------------------------
 #Wrapper for xl.read.file from the excel.link package
 read_in_files <-function(x, file_name){
@@ -41,4 +35,4 @@ dat_complete <- ldply(data, .id = 'component')
 dat_complete[dat_complete == 0] <- 0.01
 
 setwd(wd_component_data_src)
-if(!file.exists(rds_name)){saveRDS(object = dat_complete, file = rds_name_component)}
+if(!file.exists(rds_name_component)){saveRDS(object = dat_complete, file = rds_name_component)}

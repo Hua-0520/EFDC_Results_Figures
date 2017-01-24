@@ -14,7 +14,11 @@ dat$year_month <- with(dat_complete, paste(year(datetime), '-'
 names(dat) <- normVarNames(names(dat))
 
 #Spread and transform data
-dat_monthly <- spread(dat, component, downstream_boundary) %>% select(-Ecoli)
+dat_monthly <- spread(dat, component, downstream_boundary) 
+
+if('Ecoli' %in% colnames(dat_monthly)){dat_monthly %>% select(-Ecoli)}
+  
+
 names(dat_monthly) <- normVarNames(names(dat_monthly))
 dat_monthly$total <- rowSums(dat_monthly[ , 3:7])
 

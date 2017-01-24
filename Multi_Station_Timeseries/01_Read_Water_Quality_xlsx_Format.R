@@ -28,3 +28,4 @@ dat_wq <- dat_wq %>% select(date_time, station_no, result, nd_qualifier, grid_id
 
 dat_wq$year <- year(dat_wq$date_time)
 dat_wq <- dat_wq %>% filter(year > 2010 & year < 2014)
+dat_wq$nd_qualifier <- fct_recode(dat_wq$nd_qualifier, 'Detect' = 'D', 'Non-Detect' = 'ND')

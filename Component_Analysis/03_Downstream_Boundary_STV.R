@@ -13,6 +13,18 @@ dat$year_month <- with(dat_complete, paste(year(datetime), '-'
                                , sep = ''))
 names(dat) <- normVarNames(names(dat))
 
+#Check to see if "Ecoli" exists in the components field
+if(!('Ecoli' %in% unique(dat$component))){
+  dat_ecoli <- dat %>% group_by(datetime) %>% 
+    dplyr::summarise(downstream_boundary = sum(downstream_boundary)) %>% 
+    mutate(component = 'Ecoli')
+  dat_ecoli$component <- as.factor(dat_ecoli$component)
+  dat_ecoli$year_month <- with(dat_ecoli, paste(year(datetime), '-'
+                                             , str_pad(month(datetime), width = 2, side = 'left', pad = '0')
+                                             , sep = ''))
+  dat <- rbind(dat, dat_ecoli)
+}
+
 dat_monthly_stv_std <- dat %>% 
   filter(component == 'Ecoli') %>% 
   group_by(year_month) %>% 

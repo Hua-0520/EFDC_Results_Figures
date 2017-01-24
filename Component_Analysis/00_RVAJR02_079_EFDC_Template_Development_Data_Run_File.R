@@ -14,6 +14,8 @@ wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', com
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
 file_name_component <- c('EFDC_Template_Development_Data.xlsb')
 rds_name_component <- paste(component_scenario_name, '_component_test_data.rds', sep = '')
+sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
+df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
 file_name_efdc <- c('EFDC_export_011917-1631.xlsb')

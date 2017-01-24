@@ -101,3 +101,14 @@ plot_stv <- grid.arrange(x, xx, ncol = 1)
 
 setwd(wd_print)
 ggsave(filename = plot_name, plot = plot_stv, width = 6, height = 6, units = 'in')
+
+#Printing which months violate the std to txt------------------------------
+stv_violations <- dat_plot %>% filter(!is.na(perc_contribution))
+stv_violations <- unique(stv_violations$year_month)
+
+setwd(wd_print)
+write.table(stv_violations, file = paste(scenario_name, '_STV_Standard_Violations.txt', sep = '')
+            , quote = F
+            , row.names = F
+            , col.names = F)
+

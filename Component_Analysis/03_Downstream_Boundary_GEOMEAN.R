@@ -112,3 +112,13 @@ plot_geomean <- grid.arrange(x, xx, ncol = 1)
 
 setwd(wd_print)
 ggsave(filename = plot_name, plot = plot_geomean, width = 6, height = 6, units = 'in')
+
+#Printing which months violate the std to txt------------------------------
+geomean_violations <- dat_plot %>% filter(!is.na(perc_contribution))
+geomean_violations <- unique(geomean_violations$year_month)
+
+setwd(wd_print)
+write.table(geomean_violations, file = paste(scenario_name, '_GEOMEAN_Standard_Violations.txt', sep = '')
+            , quote = F
+            , row.names = F
+            , col.names = F)

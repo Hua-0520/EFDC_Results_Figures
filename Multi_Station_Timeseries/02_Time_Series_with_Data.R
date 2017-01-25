@@ -1,27 +1,32 @@
+#Working directories-------------------------------------
 wd_print <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/', scenario_name, sep = '')
 
-
+#Reformat data-------------------------------------------
 dat <- gather(dat_efdc, key = station, value = result, 2:9)
 dat$year_fac <- year(dat$datetime) %>% as.factor(.)
+dat <- dat %>% filter(station %in% unique(dat_wq$station))
 
+#Setting up plotting parameters (factors, colors, etc)----
 yrs <- unique(dat$year_fac)
 
-dat <- dat %>% filter(station %in% station_nm_of_int)
-
-
-#Adding some factors for plotting
-dat$station_fac <- fct_relevel(dat$station, as.character(station_nm_of_int))
-dat_wq$station_fac <- fct_relevel(dat_wq$station, as.character(station_nm_of_int))
-
+#Adding some factors for plotting to both the WQ
+#data and the model results
+dat$station_fac <- fct_relevel(dat$station, unique(dat_wq$station))
 dat$year_fac <- year(dat$datetime) %>% as.factor(.)
 dat$year_nm_fac <- paste0(year(dat$datetime), ' Model Results', sep = '') %>% as.factor(.)
+
+dat_wq$station_fac <- fct_relevel(dat_wq$station, unique(dat_wq$station))
 dat_wq$year_fac <- year(dat_wq$date_time) %>% as.factor(.)
 
+color_yrs <- c('2011 Model Results' = 'steelblue2', '2012 Model Results' = 'steelblue2'
+               , '2013 Model Results' = 'steelblue2')
+
+#Plot-------------------------------------------
 setwd(wd_print)
 for (i in 1:length(yrs)){
   df <- dat %>% filter(year_fac == yrs[i])
   df_wq <- dat_wq %>% filter(year_fac == yrs[i])
-  color_yrs <- c('2011 Model Results' = 'dodgerblue3', '2012 Model Results' = 'dodgerblue3', '2013 Model Results' = 'dodgerblue3')
+
   plot_name <- paste(scenario_name, '_', unique(df$year_fac), '_Time_Series_with_Data.png', sep = '')
 
   x_min <- min(df$datetime) %>% floor_date(., unit = 'day')

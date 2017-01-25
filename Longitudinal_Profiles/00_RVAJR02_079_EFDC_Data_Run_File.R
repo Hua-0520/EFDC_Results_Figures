@@ -4,19 +4,23 @@ library(rattle); library(scales); library(forcats); library(gridExtra)
 
 #Required Parameters------------------------
 scenario_name <- c('RVAJR02_079')
+# component_scenario_name <- c('RVAJR_C01')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
 wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_name, sep = '')
 # wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
-#Parameters used in 00_Read_Component_Data_xlsb_Format.R
-# file_name_component <- c('EFDC_export_012517-1110.xlsb')
-# rds_name_component <- paste(component_scenario_name, '_longitudinal_profile.rds', sep = '')
+# #Parameters used in 00_Read_Component_Data_xlsb_Format.R
+# file_name_component <- c('EFDC_Template_Development_Data.xlsb')
+# rds_name_component <- paste(component_scenario_name, '_component_test_data.rds', sep = '')
+# sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
+# df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
-# #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
-file_name_efdc <- c('EFDC_export_012517-1110.xlsb')
+#Parameters used in 00_Read_EFDC_Data_csv_Format.R
+file_name_efdc <- c('EFDC_export_012517-1201.csv')
 rds_name_efdc <- paste(scenario_name, '_longitudinal_profile_results.rds', sep = '')
+geomean_months <- c('2011-12', '2013-06', '2013-07', '2013-12')
 
 #Parameters used in Downstream_Boundary_STV.R
 ##None

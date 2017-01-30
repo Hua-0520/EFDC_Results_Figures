@@ -10,7 +10,7 @@ wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Multi
 wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_name, sep = '')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
-file_name_efdc <- c('EFDC_export_012417-1408.xlsb')
+file_name_efdc <- c('EFDC_export_013017-1219.xlsb')
 rds_name_efdc <- paste(scenario_name, '.rds', sep = '')
 
 #Run---------------------------------------

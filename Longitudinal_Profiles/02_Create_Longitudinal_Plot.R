@@ -55,7 +55,7 @@ dat_geomean_wide <- dat_geomean_wide %>% arrange(year_month)
 #Add in the J Grid value from the header
 dat_geomean_wide$j_grid_no <- header_efdc[3, c(2:2083)] %>% 
   unlist(.) %>% 
-  rep(., times = 4)
+  rep(., times = length(unique(dat_geomean_wide$year_month))) #Repeat for number of months in violation
 
 #Select the maximum geomean for each J Grid value 
 ##(selecting the cell with the least compliant water)

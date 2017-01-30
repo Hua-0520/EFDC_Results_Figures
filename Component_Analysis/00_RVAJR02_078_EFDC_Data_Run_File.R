@@ -20,7 +20,7 @@ sheet_names <- c('RVAJR_C02 (WWTP)', 'RVAJR_C02 (Unknown)'
 df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
-file_name_efdc <- c('EFDC_export_012417-1314.xlsb')
+file_name_efdc <- c('EFDC_Export_Scenario_078.xlsb')
 rds_name_efdc <- paste(scenario_name, '.rds', sep = '')
 
 #Parameters used in Downstream_Boundary_STV.R

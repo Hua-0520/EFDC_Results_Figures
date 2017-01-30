@@ -3,7 +3,7 @@ library(excel.link); library(plyr); library(dplyr); library(ggplot2); library(ti
 library(rattle); library(scales); library(forcats); library(gridExtra); library(RColorBrewer)
 
 #Required Parameters------------------------
-scenario_name <- c('RVAJR02_079')
+scenario_name <- c('RVAJR02_078')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Longitudinal_Profiles')

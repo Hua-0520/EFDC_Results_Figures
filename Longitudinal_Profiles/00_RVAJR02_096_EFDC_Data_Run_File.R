@@ -11,9 +11,9 @@ wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_n
 wd_output <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/', scenario_name, sep = '')
 
 #Parameters used in 00_Read_EFDC_Data_csv_Format.R
-file_name_efdc <- c('EFDC_export_013017-1401.csv')
+file_name_efdc <- c('EFDC_export_020917-1248.csv')
 rds_name_efdc <- paste(scenario_name, '_longitudinal_profile_results.rds', sep = '')
-geomean_months <- c('2011-12', '2013-07', '2013-12') #This line comes from GEOMEAN_Standard_Violations.txt
+geomean_months <- c('2011-12', '2013-06', '2013-07', '2013-12') #This line comes from GEOMEAN_Standard_Violations.txt
 
 #Parameters used in Downstream_Boundary_STV.R
 ##None

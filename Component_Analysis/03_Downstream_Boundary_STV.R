@@ -69,12 +69,12 @@ dat_plot[, 4:5] <- lapply(dat_plot[, 1:2], as.factor)
 names(dat_plot)[4:5] <- c('year_mo_fac', 'component_fac')
 
 #Reorder factor levels for components
-dat_plot$component_fac <- fct_relevel(dat_plot$component_fac, 'upstream_perc_cont'
-                                      , 'csos_perc_cont', 'stormwater_perc_cont'
-                                      , 'unknown_perc_cont', 'wwtp_perc_cont')
+dat_plot$component_fac <- fct_relevel(dat_plot$component_fac, 'wwtp_perc_cont' 
+                                      , 'unknown_perc_cont', 'stormwater_perc_cont'
+                                      , 'csos_perc_cont', 'upstream_perc_cont')
 
-leg_labels <- c('Upstream', 'CSOs', 'Stormwater', 'Background', 'WWTP')
-leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3')
+leg_labels <- c('Upstream', 'CSOs', 'Stormwater', 'Background', 'WWTP') %>% rev(.)
+leg_colors <- c('#80B1D3', '#FB8072', '#8DD3C7', '#BEBADA', '#FFFFB3') %>% rev(.)
 
 #Plot!-------------------------------
 #Exceedance plot
@@ -97,8 +97,8 @@ xx <- ggplot(dat_plot, aes(x = year_mo_fac, y = perc_contribution, fill = compon
   scale_color_manual(values = leg_colors, labels = leg_labels) +
   scale_fill_manual(values = leg_colors, labels = leg_labels) +
   labs(x = 'Year-Month', y = 'Percent Contribution \nto STV Exceedance (%)') +
-  guides(fill = guide_legend(nrow = 1, reverse=F)
-         , color = guide_legend(nrow = 1, reverse=F)) +
+  guides(fill = guide_legend(nrow = 1, reverse = T)
+         , color = guide_legend(nrow = 1, reverse = T)) +
   theme_bw() +
   theme(legend.title = element_blank()
         , legend.position = 'top'

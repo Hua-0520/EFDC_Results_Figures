@@ -2,13 +2,6 @@
 wd_data <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_name, sep = '')
 wd_lookup <- c('W:/RICHCWA/WinModel/EFDC/R_Scripts')
 
-#Data file name----------------------------------------
-# file_name <- c('EFDC_Template_Development_Data.xlsb') provided by the scenario run file
-# worksheets <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
-# 
-# sheet_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'E. coli')
-# df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
-
 #Load lookup tables------------------------------------
 setwd(wd_lookup)
 lookup_station <- read.csv(file = 'WQ_Station_Lookup.csv', stringsAsFactors = F)

@@ -18,7 +18,7 @@ df_loc <- data.frame(name = as.factor(loc_labs), x_loc = loc, y_loc = rep(395, 5
 
 #Create list of j grid cell values
 setwd(wd_efdc_data_src)
-header_efdc <- read.csv(file = file_name_efdc, header = T, skip = 2, nrows = 5, stringsAsFactors = F)
+header_efdc <- read.csv(file = file_name_efdc, header = F, skip = 3, nrows = 5, stringsAsFactors = F)
 efdc_j_grid <- header_efdc[3, 2:2083] %>% unlist(.)
 
 #Functions---------------------------------------------

@@ -16,7 +16,7 @@ names(dat) <- normVarNames(names(dat))
 #Spread and transform data
 dat_monthly <- spread(dat, component, downstream_boundary) 
 
-dat_monthly <- if('Ecoli' %in% colnames(dat_monthly)){dat_monthly %>% select(-Ecoli)}
+if('Ecoli' %in% colnames(dat_monthly)){dat_monthly %>% select(-Ecoli)}
   
 
 names(dat_monthly) <- normVarNames(names(dat_monthly))

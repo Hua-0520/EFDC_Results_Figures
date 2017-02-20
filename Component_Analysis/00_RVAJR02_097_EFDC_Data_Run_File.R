@@ -4,7 +4,7 @@ library(rattle); library(scales); library(forcats); library(gridExtra)
 
 #Required Parameters------------------------
 scenario_name <- c('RVAJR02_097')
-# component_scenario_name <- c('RVAJR_C03')
+component_scenario_name <- c('RVAJR_C03')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
@@ -12,12 +12,12 @@ wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_n
 wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
-# file_name_component <- c('EFDC_export_from_threestars_012416.xlsb')
-# rds_name_component <- paste(component_scenario_name, '.rds', sep = '')
-# sheet_names <- c('RVAJR_C03 (WWTP)', 'RVAJR_C03 (Unknown)'
-#                  , 'RVAJR_C03 (Stormwater)', 'RVAJR_C03 (CSOs)'
-#                  , 'RVAJR_C03 (Upstream)')
-# df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
+file_name_component <- c('EFDC_export_021717-0827.xlsb')
+rds_name_component <- paste(component_scenario_name, '.rds', sep = '')
+sheet_names <- c('RVAJR_C05 (WWTP)', 'RVAJR_C05 (Unknown)'
+                 , 'RVAJR_C05 (Stormwater)', 'RVAJR_C05 (CSOs)'
+                 , 'RVAJR_C05 (Upstream)', 'RVAJR_C05 (E. coli)')
+df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
 file_name_efdc <- c('EFDC_export_020917-1308.xlsb')

@@ -1,9 +1,9 @@
 #Working directories-----------------
 wd_print <- paste('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Figures/'
-                  , scenario_name, sep = '')
+                  , component_scenario_name, sep = '')
 
 #Parameters--------------------------
-plot_name <- paste(scenario_name, '_GEOMEAN_Component_Plot.png', sep = '')
+plot_name <- paste(component_scenario_name, '_GEOMEAN_Component_Check_Plot.png', sep = '')
 
 #Data munging------------------------
 dat <- dat_complete %>% select(1:2, 7)
@@ -13,12 +13,14 @@ dat$year_month <- with(dat_complete, paste(year(datetime), '-'
                                            , sep = ''))
 names(dat) <- normVarNames(names(dat))
 
-#Spread and transform data
+#Spread and transform component data
 dat_monthly <- spread(dat, component, downstream_boundary) 
+
+#Separate out native E. coli data from component run
+dat_monthly_ecoli <- dat_monthly %>% select(datetime, year_month, Ecoli)
 
 dat_monthly <- if('Ecoli' %in% colnames(dat_monthly)){dat_monthly %>% select(-Ecoli)}
   
-
 names(dat_monthly) <- normVarNames(names(dat_monthly))
 dat_monthly$total <- rowSums(dat_monthly[ , 3:7])
 

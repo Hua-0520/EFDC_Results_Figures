@@ -40,20 +40,6 @@ dat_monthly_stv_std_dye <- dat %>%
 
 #Plot!-------------------------------
 #Exceedance plot
-x <- ggplot(dat_monthly_stv_std_dye, aes(x = factor(year_month), y = perc_235_violation_dye)) +
-  geom_bar(stat = 'identity', fill = 'black') +
-  geom_hline(yintercept = 10, color = 'red') +
-  scale_y_continuous(labels = comma, expand = c(0, 0), limits = c(0, 100)) +
-  labs(title = 'Standard Run: Dye Variable',x = '', y = 'Percent Exceendance \nof STV Threshold (%)') +
-  theme_bw() +
-  theme(strip.background = element_blank()) +
-  theme(plot.title = element_text(hjust=0.5)) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) +
-  theme(panel.grid = element_blank()) +
-  theme(plot.margin=unit(c(10, 8, 0, 8), 'pt')) #TRBL
-
-#Exceedance plot
 xx <- ggplot(dat_monthly_stv_std_efdc, aes(x = factor(year_month), y = perc_235_violation_efdc)) +
   geom_bar(stat = 'identity', fill = 'black') +
   geom_hline(yintercept = 10, color = 'red') +
@@ -67,7 +53,21 @@ xx <- ggplot(dat_monthly_stv_std_efdc, aes(x = factor(year_month), y = perc_235_
   theme(panel.grid = element_blank()) +
   theme(plot.margin=unit(c(10, 8, 0, 8), 'pt')) #TRBL
 
-plot_stv <- grid.arrange(x, xx, ncol = 1)
+#Exceedance plot
+x <- ggplot(dat_monthly_stv_std_dye, aes(x = factor(year_month), y = perc_235_violation_dye)) +
+  geom_bar(stat = 'identity', fill = 'black') +
+  geom_hline(yintercept = 10, color = 'red') +
+  scale_y_continuous(labels = comma, expand = c(0, 0), limits = c(0, 100)) +
+  labs(title = 'Component Run: Dye Variable',x = '', y = 'Percent Exceendance \nof STV Threshold (%)') +
+  theme_bw() +
+  theme(strip.background = element_blank()) +
+  theme(plot.title = element_text(hjust=0.5)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
+  theme(axis.text.y = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) +
+  theme(panel.grid = element_blank()) +
+  theme(plot.margin=unit(c(10, 8, 0, 8), 'pt')) #TRBL
+
+plot_stv <- grid.arrange(xx, x, ncol = 1)
 
 setwd(wd_print)
 ggsave(filename = plot_name, plot = plot_stv, width = 6, height = 6, units = 'in')

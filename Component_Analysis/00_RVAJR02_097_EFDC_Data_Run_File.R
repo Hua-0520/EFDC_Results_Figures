@@ -4,7 +4,7 @@ library(rattle); library(scales); library(forcats); library(gridExtra)
 
 #Required Parameters------------------------
 scenario_name <- c('RVAJR02_097')
-component_scenario_name <- c('RVAJR_C03')
+component_scenario_name <- c('RVAJR_C05')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')

@@ -3,8 +3,8 @@ library(excel.link); library(plyr); library(dplyr); library(ggplot2); library(ti
 library(rattle); library(scales); library(forcats); library(gridExtra)
 
 #Required Parameters------------------------
-scenario_name <- c('RVAJR02_099')
-component_scenario_name <- c('RVAJR_C07')
+scenario_name <- c('RVAJR02_100')
+component_scenario_name <- c('RVAJR_C08')
 
 #Working directories------------------------
 wd_script_src <- ('W:/RICHCWA/WinModel/EFDC/R_Scripts/EFDC_Results_Figures/Component_Analysis')
@@ -12,15 +12,15 @@ wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_n
 wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
-file_name_component <- c('EFDC_export_031317-0900.xlsb')
+file_name_component <- c('EFDC_export_030817-1100.xlsb')
 rds_name_component <- paste(component_scenario_name, '.rds', sep = '')
-sheet_names <- c('RVAJR_C07b (WWTP)', 'RVAJR_C07b (Unknown)'
-                 , 'RVAJR_C07b (Stormwater)', 'RVAJR_C07b (CSOs)'
-                 , 'RVAJR_C07b (Upstream)', 'RVAJR_C07b (Total E. col)')
+sheet_names <- c('RVAJR_C08b (WWTP)', 'RVAJR_C08b (Unknown)'
+                 , 'RVAJR_C08b (Stormwater)', 'RVAJR_C08b (CSOs)'
+                 , 'RVAJR_C08b (Upstream)', 'RVAJR_C08b (Total E. col)')
 df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R
-file_name_efdc <- c('EFDC_export_031317-0900.xlsb')
+file_name_efdc <- c('EFDC_export_022817-1257.xlsb')
 rds_name_efdc <- paste(scenario_name, '.rds', sep = '')
 
 #Parameters used in Downstream_Boundary_STV.R

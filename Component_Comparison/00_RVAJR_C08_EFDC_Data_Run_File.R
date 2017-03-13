@@ -12,11 +12,11 @@ wd_efdc_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RICHCWA_Grid02/', scenario_n
 wd_component_data_src <- paste('W:/RICHCWA/WinModel/EFDC/RVAJR_Components/', component_scenario_name, sep = '')
 
 #Parameters used in 00_Read_Component_Data_xlsb_Format.R
-file_name_component <- c('EFDC_export_030117-0801.xlsb')
+file_name_component <- c('EFDC_export_030817-1100.xlsb')
 rds_name_component <- paste(component_scenario_name, '.rds', sep = '')
-sheet_names <- c('RVAJR_C08 (WWTP)', 'RVAJR_C08 (Unknown)'
-                 , 'RVAJR_C08 (Stormwater)', 'RVAJR_C08 (CSOs)'
-                 , 'RVAJR_C08 (Upstream)', 'RVAJR_C08 (Total E. col)')
+sheet_names <- c('RVAJR_C08b (WWTP)', 'RVAJR_C08b (Unknown)'
+                 , 'RVAJR_C08b (Stormwater)', 'RVAJR_C08b (CSOs)'
+                 , 'RVAJR_C08b (Upstream)', 'RVAJR_C08b (Total E. col)')
 df_names <- c('WWTP', 'Unknown', 'Stormwater', 'CSOs', 'Upstream', 'Ecoli')
 
 #Parameters used in 00_Read_EFDC_Data_xlsb_Format.R

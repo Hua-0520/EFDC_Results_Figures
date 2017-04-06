@@ -84,6 +84,7 @@ x <- ggplot(data = dat, aes(x = station_miles, y = max_j_geomean, color = year_m
   scale_color_manual(values = cc) +
   scale_linetype_manual(values = c(rep(1, length(geomean_months)), 2)) +
   labs(x = 'Distance Downstream (mi)', y = 'Geometric Mean (CFU/100 mL)') +
+  guides(color = guide_legend(nrow = 1)) +
   theme_bw() +
   theme(legend.title = element_blank()
         , legend.position = 'top'
